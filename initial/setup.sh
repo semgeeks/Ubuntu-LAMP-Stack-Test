@@ -17,7 +17,7 @@ sudo a2enmod rewrite
 
 #Obtain site name for directory creation and configuration
 echo -e "\n"
-echo -e "Enter website's domain name (this will be the root directory name): "
+echo -e "Enter website's domain name, without http:// (this will be the root directory name): "
 read sitename
 
 echo "###################################################################################"
@@ -37,9 +37,9 @@ echo "##########################################################################
 
 #Create virtualhost file
 echo "<VirtualHost *:80>
-        DocumentRoot ${WEBROOT}/public/web/
+        DocumentRoot ${WEBROOT}/
         ServerName $sitename
-        <Directory ${WEBROOT}/public/web/>
+        <Directory ${WEBROOT}/>
                 Options +Indexes +FollowSymLinks +MultiViews +Includes
                 AllowOverride All
                 Order allow,deny
@@ -63,7 +63,7 @@ sudo a2ensite $sitename
 
 #Php.ini memory limit increases
 echo -e "\n"
-echo -e "Enter memory limit, upload_max_filesize, and post_max_size for php.ini (e.g. 32M) - Note all three variables will be set to this same value: "
+echo -e "Enter memory limit, upload_max_filesize, and post_max_size for php.ini (e.g. 128M) - Note all three variables will be set to this same value: "
 read limit
 
 sed -i -r -e "s/(upload_max_filesize = ).+/\1${limit}/gi" /etc/php5/apache2/php.ini
