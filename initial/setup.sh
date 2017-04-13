@@ -66,9 +66,9 @@ echo -e "\n"
 echo -e "Enter memory limit, upload_max_filesize, and post_max_size for php.ini (e.g. 128M) - Note all three variables will be set to this same value: "
 read limit
 
-sed -i -r -e "s/(upload_max_filesize = ).+/\1${limit}/gi" /etc/php5/apache2/php.ini
-sed -i -r -e "s/(post_max_size = ).+/\1${limit}/gi" /etc/php5/apache2/php.ini
-sed -i -r -e "s/(memory_limit = ).+/\1${limit}/gi" /etc/php5/apache2/php.ini
+sed -i -r -e "s/(upload_max_filesize = ).+/\1${limit}/gi" /etc/php/7.0/apache2/php.ini
+sed -i -r -e "s/(post_max_size = ).+/\1${limit}/gi" /etc/php/7.0/apache2/php.ini
+sed -i -r -e "s/(memory_limit = ).+/\1${limit}/gi" /etc/php/7.0/apache2/php.ini
 
 
 #Create site db and new user

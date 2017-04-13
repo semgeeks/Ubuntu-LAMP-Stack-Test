@@ -19,8 +19,8 @@ echo "##########################################################################
 echo "Installing packages..."
 echo "###################################################################################"
 
-#Apache, Php, MySQL, and required packages installation
-sudo apt-get -y install php libapache2-mod-php php-mcrypt php-mysql mysql-client php-curl php7.0-gd zip unzip
+#Apache, PHP, MySQL, and required packages installation
+sudo apt-get -y install apache2 php libapache2-mod-php php-mcrypt php-mysql mysql-client php-curl php7.0-gd zip unzip
 
 #The following commands prompt and set the MySQL root password when you install the mysql-server package.
 while true
@@ -48,7 +48,7 @@ echo $password > pw.tmp
 #Restart all the installed services to verify that everything is installed properly
 echo -e "\n"
 
-service apache2 restart && service mysql restart > /dev/null
+sudo service apache2 restart && service mysql restart > /dev/null
 
 echo -e "\n"
 
