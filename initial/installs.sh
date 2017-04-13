@@ -20,7 +20,7 @@ echo "Installing packages..."
 echo "###################################################################################"
 
 #Apache, Php, MySQL, and required packages installation
-sudo apt-get -y install apache2 php5 libapache2-mod-php5 php5-mcrypt php5-curl php5-mysql php5-gd php5-cli php5-dev mysql-client curl
+sudo apt-get -y install php libapache2-mod-php php-mcrypt php-mysql mysql-client php-curl php7.0-gd zip unzip
 
 #The following commands prompt and set the MySQL root password when you install the mysql-server package.
 while true
