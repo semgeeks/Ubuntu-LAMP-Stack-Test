@@ -7,11 +7,11 @@
 #sudo ./SCRIPTNAME.sh
 
 echo "###################################################################################"
-echo "Enabling Apache and php5 modules..."
+echo "Enabling Apache and php modules..."
 echo "###################################################################################"
 
-#Enable Apache and php5 modules
-sudo php5enmod mcrypt
+#Enable Apache and php modules
+sudo phpenmod mcrypt
 sudo a2enmod rewrite
 
 
@@ -19,6 +19,12 @@ sudo a2enmod rewrite
 echo -e "\n"
 echo -e "Enter website's domain name, without http:// (this will be the root directory name): "
 read sitename
+
+echo "###################################################################################"
+echo "Set AllowOverride to All (this for so pretty permalinks work in CMS-drive sites)..."
+echo "###################################################################################"
+
+awk '/<Directory \/var\/www\/>/,/AllowOverride None/{sub("None", "All",$0)}{print}' /etc/apache2/apache2.conf > /etc/apache2/apache2-conf.tmp && mv /etc/apache2/apache2-conf.tmp /etc/apache2/apache2.conf
 
 echo "###################################################################################"
 echo "Assigning webroot permissions..."
